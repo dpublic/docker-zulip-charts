@@ -3,6 +3,43 @@ entries:
   zulip:
   - apiVersion: v2
     appVersion: 9.3-0
+    created: "2024-12-13T21:57:33.759812559Z"
+    dependencies:
+    - name: memcached
+      repository: oci://registry-1.docker.io/bitnamicharts
+      tags:
+      - memcached
+      version: 7.4.16
+    - name: rabbitmq
+      repository: oci://registry-1.docker.io/bitnamicharts
+      tags:
+      - rabbitmq
+      version: 14.7.0
+    - name: redis
+      repository: oci://registry-1.docker.io/bitnamicharts
+      tags:
+      - redis
+      version: 20.1.4
+    - name: postgresql
+      repository: oci://registry-1.docker.io/bitnamicharts
+      tags:
+      - postgresql
+      version: 15.5.32
+    description: Zulip is an open source threaded team chat that helps teams stay
+      productive and focused.
+    digest: f7046f597f96417f88f2d4802be144c985739cd5100d13daffa11db990d9e4b0
+    icon: https://raw.githubusercontent.com/zulip/zulip/main/static/images/logo/zulip-icon-square.svg
+    name: zulip
+    sources:
+    - https://github.com/zulip/zulip
+    - https://github.com/zulip/docker-zulip
+    - https://hub.docker.com/r/zulip/docker-zulip
+    type: application
+    urls:
+    - https://github.com/dpublic/docker-zulip-charts/releases/download/zulip-0.9.39/zulip-0.9.39.tgz
+    version: 0.9.39
+  - apiVersion: v2
+    appVersion: 9.3-0
     created: "2024-12-13T21:33:24.448016603Z"
     dependencies:
     - name: memcached
@@ -149,4 +186,4 @@ entries:
     urls:
     - https://github.com/dpublic/docker-zulip-charts/releases/download/zulip-0.9.30-dzc1/zulip-0.9.30-dzc1.tgz
     version: 0.9.30-dzc1
-generated: "2024-12-13T21:33:24.448044155Z"
+generated: "2024-12-13T21:57:33.759829981Z"
