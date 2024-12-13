@@ -55,6 +55,9 @@ spec:
               mountPath: /data
             - name: {{ include "zulip.fullname" . }}-post-setup-scripts
               mountPath: /data/post-setup.d
+            {{- with .Values.extraVolumeMounts }}
+            {{- toYaml . | nindent 12 }}
+            {{- end }}
           env:
             {{ include "zulip.env" . | nindent 12 }}
           resources:
@@ -67,6 +70,8 @@ spec:
               httpHeaders:
               - name: Host
                 value: {{ .Values.zulip.environment.SETTING_EXTERNAL_HOST | quote }}
+              - name: X-Forwarded-Proto
+                value: https
             initialDelaySeconds: {{ .Values.livenessProbe.initialDelaySeconds }}
             periodSeconds: {{ .Values.livenessProbe.periodSeconds }}
             timeoutSeconds: {{ .Values.livenessProbe.timeoutSeconds }}
@@ -81,6 +86,8 @@ spec:
               httpHeaders:
               - name: Host
                 value: {{ .Values.zulip.environment.SETTING_EXTERNAL_HOST | quote }}
+              - name: X-Forwarded-Proto
+                value: https
             initialDelaySeconds: {{ .Values.startupProbe.initialDelaySeconds }}
             periodSeconds: {{ .Values.startupProbe.periodSeconds }}
             timeoutSeconds: {{ .Values.startupProbe.timeoutSeconds }}
@@ -96,6 +103,9 @@ spec:
           configMap:
             name: {{ include "zulip.fullname" . }}-post-setup-scripts
             defaultMode: 0750
+        {{- with .Values.extraVolumes }}
+        {{- toYaml . | nindent 8 }}
+        {{- end }}
       {{- with .Values.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}
